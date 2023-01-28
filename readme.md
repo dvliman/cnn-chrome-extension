@@ -1,5 +1,9 @@
-Start the shadow-cljs in Clojure REPL
-`/bin/npx shadow-cljs -d nrepl/nrepl:1.0.0 -d cider/cider-nrepl:0.29.0 -d refactor-nrepl/refactor-nrepl:3.5.5 server`
+Start the shadow-cljs in Clojure REPL (i.e `cider-jack-in`) or `shadow-cljs watch extension` in a terminal and `cider-connect-cljs`
+
+```
+/bin/npx shadow-cljs -d nrepl/nrepl:1.0.0 -d cider/cider-nrepl:0.29.0 -d refactor-nrepl/refactor-nrepl:3.5.5 server`
+```
+
 
 Watch the extension build (wait until it says "Build completed" so you don't get Stale Output warning)
 
