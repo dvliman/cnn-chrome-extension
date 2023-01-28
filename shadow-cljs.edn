@@ -1,0 +1,25 @@
+{:source-paths ["src"]
+ :nrepl {:port 3333}
+ :http  {:port 9630}
+ :dev-http {8888 "public"}
+
+ :dependencies
+ [[binaryage/devtools "0.9.10"]
+  [binaryage/chromex "0.9.3"]
+  [cljs-http "0.1.46"]
+  [org.clj-commons/hickory "0.7.3"]
+  #_[reagent "1.1.1"]
+  ;; dev
+  [cider/cider-nrepl "0.28.3"]
+  [refactor-nrepl "3.6.0"]
+  [cider/piggieback "0.5.2"]]
+
+ :builds
+ {:extension
+   {:target :chrome-extension
+    :extension-dir    "resources/unpacked"
+    :manifest-file    "resources/unpacked/manifest.edn"
+    :compiler-options {:closure-output-charset "US-ASCII"
+                       :source-map-inline      true}
+    :outputs          {:popup  {:output-type :chrome/single-file
+                                :entries     [cnn-chrome-extension.popup]}}}}}
