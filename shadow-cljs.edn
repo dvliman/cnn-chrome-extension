@@ -15,5 +15,5 @@
    :manifest-file    "resources/unpacked/manifest.edn"
    :compiler-options {:closure-output-charset "US-ASCII"
                       :source-map-inline      true}
-   :outputs          {:popup  {:output-type :chrome/single-file
+   :outputs          {:popup  {:output-type :chrome/shared
                                :entries     [cnn-chrome-extension.popup]}}}}}

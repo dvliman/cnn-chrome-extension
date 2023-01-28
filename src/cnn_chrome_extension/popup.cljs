@@ -2,8 +2,8 @@
   (:require [chromex.support :refer [runonce]]
             [cljs-http.client :as http]))
 
-(defn init! [])
+(defn init! []
+  (prn "init")
+  (prn "test"))
 
 (runonce init!)
-
-(.log js/console "test")
