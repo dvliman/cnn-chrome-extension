@@ -1,9 +1,6 @@
 (ns cnn-chrome-extension.popup
   (:require [chromex.support :refer [runonce]]
-            [cljs-http.client :as http]))
+            [cnn-chrome-extension.core :as core]))
 
-(defn init! []
-  (prn "init")
-  (prn "test"))
-
-(runonce init!)
+(runonce
+ (core/init!))
