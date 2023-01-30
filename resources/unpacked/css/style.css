@@ -3,12 +3,46 @@ body {
 }
 
 #app {
-    width: 300px;
+    width: 600px;
     padding: 10px
 }
 
 #main {
     width: 100%;
-    color: #1C1C1C;
     font-size: 14px
+}
+
+.newslist {
+    padding: 0px 16px 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.news {
+    list-style-type: none;
+    background-color: rgba(55, 53, 47, 0.08);
+    background-radius: 6px;
+    border-radius: 4px;
+    padding: 8px 16px;
+    justify-content: space-between;
+    align-items: center;
+    diplay: inline-flex;
+    margin: 5px;
+    cursor: pointer;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.cnn {
+    color: red;
+    font-weight: bold;
+    padding: 5px;
 }

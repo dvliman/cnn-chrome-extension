@@ -8,6 +8,7 @@
   [cljs-http "0.1.46"]
   [org.clj-commons/hickory "0.7.3"]
   [reagent "1.1.1"]]
+
  :builds
  {:extension
   {:target :chrome-extension
