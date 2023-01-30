@@ -5,7 +5,8 @@
             [clojure.zip :as zip]
             [clojure.string :as str]
             [hickory.zip]
-            [hickory.core]))
+            [hickory.core]
+            [reagent.dom]))
 
 (def endpoint "https://lite.cnn.com/")
 
@@ -33,6 +34,17 @@
       (prn "failed to parse: " e)
       [])))
 
+
+(defn render [data]
+  (let [component
+        [:div#main
+         [:ul.newslist
+          (for [[link title] data]
+            [:li.news [:a {:href link} title]])]]]
+    (reagent.dom/render
+     [component]
+     (.getElementById js/document "app"))))
+
 (defn init! []
   (prn "init!")
   (go (-> (<! (http/get endpoint))
@@ -41,7 +53,7 @@
           hickory.core/as-hiccup
           hickory.zip/hiccup-zip
           maybe-parse
-          ))
+          render))
   (prn "done"))
 
 (go (-> (<! (http/get endpoint))
