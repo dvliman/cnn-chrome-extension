@@ -11,12 +11,15 @@
 
  :builds
  {:extension
-  {:target :chrome-extension
-   :extension-dir    "resources/unpacked"
-   :manifest-file    "resources/unpacked/manifest.edn"
-   :compiler-options {:closure-output-charset "US-ASCII"
-                      :source-map-inline      true
-                      :optimizations :advanced
-                      :infer-externs :auto}
-   :outputs          {:popup  {:output-type :chrome/shared
-                               :entries     [cnn-chrome-extension.popup]}}}}}
+  {:target :esm
+   :output-dir "resources/unpacked/out"
+   :runtime :custom
+   :compiler-options
+   {:closure-output-charset "US-ASCII"
+    :optimizations :simple}
+   :modules
+   {:shared
+    {:entries []}
+    :popup
+    {:init-fn cnn-chrome-extension.popup/init!
+     :depends-on #{:shared}}}}}}

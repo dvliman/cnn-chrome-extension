@@ -1,11 +1,20 @@
-{"name":"CNN Chrome Extension",
- "version":"1.0",
- "description":"Read CNN news in Chrome Extension",
- "manifest_version":3,
- "permissions":["activeTab", "storage", "http://*/*", "https://*/*"],
- "browser_action":
- {"default_title":"Show the popup",
-  "default_icon":"images/icon48.png",
-  "default_popup":"popup.html"},
- "content_security_policy":
- "default-src 'self'; script-src 'self' 'unsafe-eval' http://localhost:9630; connect-src * data: blob: filesystem:; style-src 'self' data: chrome-extension-resource: 'unsafe-inline'; img-src 'self' data: chrome-extension-resource:; frame-src 'self' http://localhost:* data: chrome-extension-resource:; font-src 'self' data: chrome-extension-resource:; media-src * data: blob: filesystem:;"}
+{
+  "name":"CNN Chrome Extension",
+  "version":"1.0",
+  "description":"Read CNN news in Chrome Extension",
+  "manifest_version":3,
+  "permissions":[],
+  "action": {
+    "default_title":"CNN Chrome Extension",
+    "default_icon":"images/icon48.png",
+    "default_popup":"popup.html"
+  },
+  "host_permissions": [
+    "https://lite.cnn.com/*"
+  ],
+  "icons":{
+    "48":"images/icon48.png",
+    "96":"images/icon96.png",
+    "128":"images/icon128.png"
+  }
+}

@@ -46,7 +46,7 @@
                 " | "
                 (.toString (js/Date.))]
         footer [:span
-                "Made by " [:a {:href "https://postwalk.org"} "Postwalk"]
+                "Made by David Liman @" [:a {:href "https://postwalk.org"} "Postwalk"]
                 " | "
                 [:a {:href "https://github.com/dvliman/cnn-chrome-extension"} "Source Code"]
                 " | "
