@@ -15,7 +15,9 @@
   (devtools.core/install! [:formatters :hints]))
 
 (defn escape-single-quote [x]
-  (clojure.string/replace x #"&#39;" "'"))
+  (-> x
+      (clojure.string/replace #"&#39;" "'")
+      (clojure.string/replace #"&amp;" "&")))
 
 (defn maybe-parse [z]
   (try
@@ -44,12 +46,16 @@
          [:div.newslist
           [:span
            [:a.cnn {:href endpoint} "CNN"]
-           #_" | "
-           #_(.toString (js/Date.))]
+           " | "
+           (.toString (js/Date.))]
           [:ul
            (for [[link title] data]
              [:li.news {:key link}
-              [:span [:a.link {:href link :target :_blank} title]]])]]]]
+              [:span [:a.link {:href link :target :_blank} title]]])]
+          [:span
+           "Made by " [:a {:href "https://postwalk.org"} "Postwalk"]
+           " | "
+           [:a {:href "https://github.com/dvliman/cnn-chrome-extension"} "Source Code"]]]]]
     (reagent.dom/render
      [(constantly component)]
      (.getElementById js/document "app"))))
