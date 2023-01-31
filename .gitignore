@@ -19,3 +19,5 @@ pom.xml.asc
 .hgignore
 .hg/
 resources/unpacked/out
+
+.DS_Store

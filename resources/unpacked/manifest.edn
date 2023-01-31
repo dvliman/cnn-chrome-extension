@@ -1,7 +1,7 @@
 {:name             "CNN Chrome Extension"
  :version          "1.0"
  :description      "Read CNN news in Chrome Extension"
- :manifest-version 2
+ :manifest-version 3
 
  :permissions      ["activeTab"
                     "storage"

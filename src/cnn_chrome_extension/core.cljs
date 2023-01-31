@@ -41,21 +41,27 @@
       [])))
 
 (defn render [data]
-  (let [component
+  (let [header [:span
+                [:a.cnn {:href endpoint} "CNN"]
+                " | "
+                (.toString (js/Date.))]
+        footer [:span
+                "Made by " [:a {:href "https://postwalk.org"} "Postwalk"]
+                " | "
+                [:a {:href "https://github.com/dvliman/cnn-chrome-extension"} "Source Code"]
+                " | "
+                [:a {:href "https://www.buymeacoffee.com/dvliman"} "Buy me a coffee"]]
+        body [:ul
+              (for [[link title] data]
+                [:li.news {:key link}
+                 [:span [:a.link {:href link :target :_blank} title]]])]
+
+        component
         [:div#main
          [:div.newslist
-          [:span
-           [:a.cnn {:href endpoint} "CNN"]
-           " | "
-           (.toString (js/Date.))]
-          [:ul
-           (for [[link title] data]
-             [:li.news {:key link}
-              [:span [:a.link {:href link :target :_blank} title]]])]
-          [:span
-           "Made by " [:a {:href "https://postwalk.org"} "Postwalk"]
-           " | "
-           [:a {:href "https://github.com/dvliman/cnn-chrome-extension"} "Source Code"]]]]]
+          header
+          body
+          footer]]]
     (reagent.dom/render
      [(constantly component)]
      (.getElementById js/document "app"))))
