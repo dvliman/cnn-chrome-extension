@@ -6,7 +6,8 @@
             [clojure.string]
             [hickory.zip]
             [hickory.core]
-            [reagent.dom]))
+            [reagent.dom]
+            [devtools.core]))
 
 (def endpoint "https://lite.cnn.com")
 
