@@ -4,7 +4,6 @@
 
  :dependencies
  [[binaryage/devtools "0.9.10"]
-  [binaryage/chromex "0.9.3"]
   [cljs-http "0.1.46"]
   [org.clj-commons/hickory "0.7.3"]
   [reagent "1.1.1"]]
@@ -21,5 +20,5 @@
    {:shared
     {:entries []}
     :popup
-    {:init-fn cnn-chrome-extension.popup/init!
+    {:init-fn cnn-chrome-extension.core/init!
      :depends-on #{:shared}}}}}}

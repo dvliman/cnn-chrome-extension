@@ -6,8 +6,7 @@
             [clojure.string]
             [hickory.zip]
             [hickory.core]
-            [reagent.dom]
-            [chromex.logging :refer-macros [log]]))
+            [reagent.dom]))
 
 (def endpoint "https://lite.cnn.com")
 
@@ -37,20 +36,23 @@
            (map (juxt (comp #(str endpoint %) :href second first)
                       (comp escape-single-quote last first)))))
     (catch js/Error e
-      (log "failed to parse: " e)
+      (prn "failed to parse: " e)
       [])))
 
 (defn render [data]
   (let [header [:span
-                [:a.cnn {:href endpoint} "CNN"]
+                [:a.cnn {:href endpoint :target :_blank} "CNN"]
                 " | "
                 (.toString (js/Date.))]
         footer [:span
-                "Made by David Liman @" [:a {:href "https://postwalk.org"} "Postwalk"]
+                "Made by "
+                [:a {:href "https://dvliman.com/" :target :_blank} "David Liman"]
+                " @ "
+                [:a {:href "https://postwalk.org" :target :_blank} "Postwalk"]
                 " | "
-                [:a {:href "https://github.com/dvliman/cnn-chrome-extension"} "Source Code"]
+                [:a {:href "https://github.com/dvliman/cnn-chrome-extension" :target :_blank} "Source Code"]
                 " | "
-                [:a {:href "https://www.buymeacoffee.com/dvliman"} "Buy me a coffee"]]
+                [:a {:href "https://www.buymeacoffee.com/dvliman" :target :_blank} "Buy me a coffee"]]
         body [:ul
               (for [[link title] data]
                 [:li.news {:key link}
@@ -67,7 +69,6 @@
      (.getElementById js/document "app"))))
 
 (defn init! []
-  (log "init!")
   (go (-> (<! (http/get endpoint))
           :body
           hickory.core/parse
